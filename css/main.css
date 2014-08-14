@@ -1,0 +1,52 @@
+/* body{ */
+/*     padding: 50px; */
+/* } */
+
+/* Header */
+#header .title{
+    font-size: 3em;
+    text-align: center;
+}
+#header .subtitle{
+    text-align: left;
+    font-size: 1.3em;
+    margin-top: 1em;
+}
+
+/* /\* Main body *\/ */
+/* #main { */
+/*     float: left; */
+/*     width: 80%; */
+/* } */
+
+/* /\* Dogs listings *\/ */
+/* .dogs-listing { */
+/*     width: 100% */
+/*     height: 200px; */
+/* } */
+
+/* .dogs-listing div.dog-image-name { */
+/*     padding-bottom: 1em; */
+/*     width: 200px; */
+/*     height: 200px; */
+/* } */
+
+.dogs-listing .dog-image-name img{
+    max-width:200px;
+    max-height:200px;
+}
+
+/* .dogs-listing .dog-name{ */
+/*     color: #222222; */
+/*     font-size: 1.2em; */
+/*     font-weight: bold; */
+/*     text-align: center; */
+/* } */
+
+/* .dogs-listing .dog-attributes { */
+/* } */
+
+/* #side { */
+/*     float: right; */
+/*     width: 20%; */
+/* } */
