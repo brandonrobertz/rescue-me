@@ -5,160 +5,131 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script type="text/javascript" src="js/tabletop.js"></script>
     <script type="text/javascript" src='js/sheetsee.js'></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min.js"></script>
+    <script type="text/javascript" src="js/slider.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-animate.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+    <script src="js/app.js"></script>
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/base-min.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--[if lte IE 8]>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-old-ie-min.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
-    <!--<![endif]-->
-  </head>
-  <body ng-controller="WagsCtrl">
-    <div id="main">
-      <div id="header" class="pure-g">
-        <div class="header-row pure-u-2-5">
-          <div class="title">
-            Wags N Licks
-          </div>
-        </div>
-        <div class="header-row pure-u-3-5">
-          <div class="subtitle">
-            Dog Adoption List
-          </div>
-          <div class="placeholder">
-          </div>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+
+    <link rel="stylesheet" href="css/jquery-ui.css">
+
+    <script type="text/ng-template" id="dogDetail">
+      <div class="modal-header">
+        <h3 class="modal-title">{{dog.name}}</h3>
+      </div>
+      <div class="modal-body">
+        <img style="max-width:100%; max-height:50%;" class="pure-img" ng-src="{{dog.photourl}}" />
+        <div class="full-description">
+          {{dog.description}}
         </div>
       </div>
-      <div id="content" class="pure-g">
-        <div id="dogs" class="pure-u-3-5">
-          <div ng-repeat="dog in dogs | filterAttrib:{'keepList':filterByType.breed, 'name': 'breed'} |  filterAttrib:{'keepList':filterByType.size, 'name': 'size'}  | filterAttrib:{'keepList':filterByType.sex, 'name': 'sex'} | filter:querydesc" class="dogs-listing pure-g">
-            <div class="dog-image pure-u-1-5">
-              <img class="pure-img" ng-src="{{dog.photourl}}" />
-            </div>
-            <div class="dog-name pure-u-1-5">
-              {{dog.name}}
-            </div>
-            <div class="dog-attributes pure-u-3-5">
-              {{dog.sex}} {{dog.breed}} {{dog.weight}}
-              {{dog.description}} {{dog.medicalissues}} {{dog.status}} {{dog.intakedate}}
-            </div>
-          </div>
+      <div class="modal-footer">
+        <button class="btn" ng-click="$dismiss()">Close</button>
+      </div>
+    </script>
+
+    <!--<![endif]-->
+  </head>
+  <body ng-controller="WagsCtrl" class="container-fluid">
+    <div id="header" class="row">
+      <div class="header-row col-xs-6">
+        <div class="title">
+          <h1>Wags N Licks</h1>
         </div>
-        <div id="side" class="pure-u-2-5">
-          Search: <input ng-model="querydesc">
-
-          <div>
-            Size:
-            <div ng-repeat="size in filterByType.size">
-              <input type="checkbox" ng-model="size.value"/> {{size.name}}
-            </div>
-          </div>
-          <div>
-            Breed:
-            <div ng-repeat="breed in filterByType.breed">
-              <input type="checkbox" ng-model="breed.value"/> {{breed.name}}
-            </div>
-          </div>
-          <div>
-            Sex:
-            <div ng-repeat="sex in filterByType.sex">
-              <input type="checkbox" ng-model="sex.value"/> {{sex.name}}
-            </div>
-          </div>
-
+      </div>
+      <div class="header-row col-xs-6">
+        <div class="subtitle">
+          <h2>Dog Adoption List</h2>
+        </div>
+        <div class="placeholder">
         </div>
       </div>
     </div>
-  <script type="text/javascript">
-   angular.module('wags', ['ngAnimate']).controller('WagsCtrl', ['$scope', function($scope) {
-     $scope.dogs = [];
-     $scope.dogBreeds = [];
-     $scope.filterByType = {
-       breed: [],
-       size: [],
-       sex: []
-     }
 
-     function getFilterTypes( data, filterObj) {
-       if(!data) return;
+    <div id="main" class="row">
+      <div id="content" class="col-xs-8">
+        <div id="dogs">
+          <div ng-repeat="dog in dogs | filterAttrib:{'keepList':filterByType.breed, 'name': 'breed'} |  filterAttrib:{'keepList':filterByType.size, 'name': 'size'}  | filterAttrib:{'keepList':filterByType.sex, 'name': 'sex'} | filterAge:age | filter:querydesc"
+               class="dogs-listing pure-g">
+            <div class="dog-image pure-u-1-5">
+              <a href="" ng-click="open(dog)">
+                <img style="max-width:200px; max-height:200px;" class="pure-img" ng-src="{{dog.photourl}}" />
+              </a>
+            </div>
+            <div class="dog-details pure-u-4-5">
+              <div class="dog-name pure-u-1-5">
+                  <h3><a href="" ng-click="open(dog)">{{dog.name}}</a></h3>
+              </div>
+              <div class="dog-attributes pure-u-3-5">
+                <div class="sex">
+                  {{dog.sex}}
+                </div>
+                <div class="breed">
+                  {{dog.breed}}
+                </div>
+                <div class="weight">
+                  {{dog.weight}}
+                </div>
+                <div class="description">
+                  {{dog.description | cut:true:20 }}
+                </div>
+                <div class="status">
+                  {{dog.status}}
+                </div>
+                <div class="sex">
+                  {{dog.sex}}
+                </div>
+                <div class="intakedate">
+                  {{dog.intakedate}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-       /**
-        * This loop is responsible for a lot (building selection list),
-       * de-duping selections. It could probably be optimized.
-       */
-       for( var i = 0; i < data.length; i++){
-         /**
-          * This is an individual item, we will be pulling values from here
-          * to build the selection options from
-          */
-         var item = data[i];
+      <div id="side" class="col-xs-4">
+        <div class="form-group">
+          <label for="searchField">Search</label>
+          <input id="searchField" class="form-control" ng-model="querydesc">
+        </div>
+        <div class="checkbox">
+          Size
+          <label ng-repeat="size in filterByType.size" class="checkbox-inline">
+            <input type="checkbox" ng-model="size.value"/> {{size.name}}
+          </label>
+        <div>
+          Breed
+          <div class="checkbox">
+            <label ng-repeat="breed in filterByType.breed" class="checkbox-inline">
+              <input type="checkbox" ng-model="breed.value"/> {{breed.name}}
+            </label>
+          </div>
+        </div>
+        <div>
+          Sex
+          <div class="checkbox">
+            <label ng-repeat="sex in filterByType.sex" class="checkbox-inline">
+              <input type="checkbox" ng-model="sex.value"/> {{sex.name}}
+            </label>
+          </div>
+        </div>
+        <div class="age-control">
+          Age
+          <div ui-slider="{range: true}" min="1" max="18" step="1" ng-model="age" class="age-slider"></div>
+          Selected {{age[0]}} - {{age[1]}}
+        </div>
+      </div>
 
-         for( var type in item){
-           /**
-            * The type here is a selection category. It needs to exist in the
-            * filterObj object to get recognized.
-            */
-           if( item.hasOwnProperty(type) && filterObj[type] !== undefined){
-             var feature = {name: data[i][type], value: true};
-
-             /**
-              * Here we de-dupe the filter options so we don't get
-              * dupes in the list
-              */
-             var match = false;
-             for( var x = 0; x < filterObj[type].length; x++){
-               if( filterObj[type][x].name === feature.name) {
-                 match = true;
-               }
-             }
-
-             /* don't make dupes! */
-             if( !match) {
-               filterObj[type].push( feature);
-             }
-           }
-         }
-       }
-     }
-
-     function loadDogs(data) {
-       $scope.dogs = data;
-       $scope.$apply($scope.dogs);
-       $scope.$apply(getFilterTypes( $scope.dogs, $scope.filterByType));
-     }
-
-     var URL = "1y-kJ2lehFeMEn4avPAzf1b7RfsYTKL19fsznK8qaP_w";
-     Tabletop.init( { key: URL, callback: loadDogs, simpleSheet: true } );
-
-   }]).filter('filterAttrib',function () {
-     return function (collection, attrib) {
-       /* Note: keep list needs to be de-duped */
-       if (collection === null) return collection;
-
-       var newCollection = [];
-       var keepList = attrib.keepList;
-       var property = attrib.name;
-
-       if (!keepList || !property) return collection;
-
-       for( var k = 0; k < keepList.length; k++) {
-         var keep = keepList[k];
-         for( var n = 0; n < collection.length; n++){
-           var current = collection[n];
-           if( keep.value && keep.name === current[property]){
-             newCollection.push(current);
-           }
-         }
-       }
-       return newCollection;
-     }
-   });
-  </script>
+    </div>
   </body>
 </html>
