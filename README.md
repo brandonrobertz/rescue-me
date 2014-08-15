@@ -1,6 +1,6 @@
 # Rescue Me!
 
-![Rescue Me! logo](http://brandonrobertz.github.io/RescueMe/css/images/logo.png)
+![Rescue Me! logo](http://brandonrobertz.github.io/RescueMe/css/images/rescueme.png)
 
 Rescue Me! is a webapp that makes linking animal shelters with
 people looking to adopt simple and painless.
