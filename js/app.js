@@ -5,10 +5,13 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
     $scope.filterByType = {
         breed: [],
         size: [],
-        sex: []
+        sex: [],
+        spayedorneutered: [],
+        energylevel: []
     }
 
     $scope.age = [1, 18];
+    $scope.weight = [1, 200];
 
     $scope.open = function ( dog) {
         $modal.open({
@@ -77,6 +80,21 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
         }
     }
 
+    /**
+     * Take our filterObj and set all the children objects
+     * 'value' to whatever is specified
+     */
+    $scope.check = function( filterObj, toValue){
+        console.log('filterObj', filterObj);
+        for( var option in filterObj){
+            console.log('opt', option);
+            if( filterObj.hasOwnProperty(option) && angular.isDefined(filterObj[option].value)){
+                console.log( 'filterObj[option].value', filterObj[option]);
+                filterObj[option].value = toValue;
+            }
+        }
+    }
+
     function loadDogs(data) {
         $scope.dogs = data;
         $scope.$apply($scope.dogs);
@@ -117,6 +135,21 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
             var item = collection[i],
                 intAge = parseFloat( item.age);
             if( intAge >= ageRange[0] && intAge <= ageRange[1]){
+                newCollection.push(item);
+            }
+        }
+
+        return newCollection;
+    }
+}).filter('filterWeight',function () {
+    return function (collection, weightRange) {
+        if (collection === null) return collection;
+        var newCollection = [];
+
+        for( var i = 0; i < collection.length; i++){
+            var item = collection[i],
+            intWeight = parseFloat( item.weight);
+            if( intWeight >= weightRange[0] && intWeight <= weightRange[1]){
                 newCollection.push(item);
             }
         }

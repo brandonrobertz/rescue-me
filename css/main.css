@@ -5,7 +5,7 @@
     height: 125px;
 }
 #header .subtitle{
-    text-align: left;
+    text-align: center;
     font-size: 1.3em;
     padding-top: 40px;
     vertical-align: bottom;
@@ -26,6 +26,11 @@ div.row {
     /* max-height:75%; */
 }
 
+.dogs-listing .description p {
+    padding: 1em;
+    color: #777777;
+}
+
 .adoption-ready {
     text-align: center;
 }
@@ -36,6 +41,23 @@ div.row {
 }
 
 /* Controls */
+
+#side {
+    margin-top: -100px;
+}
+
+#side h2 {
+    color: #909090;
+}
+
 .age-control .age-slider {
-    width: 200px;
+    width: 90%;
+}
+.weight-control .weight-slider {
+    width: 90%;
+}
+
+
+.partition {
+    color: #999999;
 }
