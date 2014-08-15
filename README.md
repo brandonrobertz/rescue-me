@@ -1,6 +1,6 @@
 # Rescue Me!
 
-![Rescue Me! logo](/path/to/img.jpg)
+![Rescue Me! logo](http://brandonrobertz.github.io/RescueMe/css/images/logo.png)
 
 Rescue Me! is a webapp that makes linking animal shelters with
 people looking to adopt simple and painless.
@@ -20,8 +20,8 @@ up your own Rescue Me website under your github account.
 
 ### 1. Create your Google Spreadsheet
 
-An example spreadsheet for the (Wags And Licks)[http://wagsandlicks.org/] is
-located (here)[https://docs.google.com/spreadsheets/d/1y-kJ2lehFeMEn4avPAzf1b7RfsYTKL19fsznK8qaP_w/edit#gid=0]. It needs the fields
+An example spreadsheet for the [Wags And Licks](http://wagsandlicks.org/) is
+located [here](https://docs.google.com/spreadsheets/d/1y-kJ2lehFeMEn4avPAzf1b7RfsYTKL19fsznK8qaP_w/edit#gid=0). It needs the fields:
 
     Name
     Sex
