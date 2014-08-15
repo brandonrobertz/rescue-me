@@ -28,6 +28,8 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
         });
     };
 
+    $scope.loaded = false;
+
     /**
      * Build the selection options for the filter.
      * Params:
@@ -99,6 +101,8 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
         $scope.dogs = data;
         $scope.$apply($scope.dogs);
         $scope.$apply(getFilterTypes( $scope.dogs, $scope.filterByType));
+        $scope.loaded = true;
+        $scope.$apply($scope.loaded);
     }
 
     Tabletop.init( { key: URL, callback: loadDogs, simpleSheet: true } );

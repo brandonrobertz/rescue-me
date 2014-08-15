@@ -23,7 +23,7 @@
         <h3 class="modal-title">{{dog.name | uppercase}}</h3>
       </div>
       <div class="modal-body">
-        <img style="max-width:100%; max-height:50%;" class="pure-img" ng-src="{{dog.photourl}}" />
+        <img style="max-width:100%; max-height:50%;" ng-src="{{dog.photourl}}" />
         <div class="full-description">
           {{dog.description}}
         </div>
@@ -51,7 +51,7 @@
       </div>
     </div>
 
-    <div id="main" class="row">
+    <div id="main" class="row" ng-show="loaded">
 
       <!-- Display Area -->
       <div id="content" class="col-xs-10">
@@ -168,6 +168,11 @@
 
       </div>
 
+    </div>
+
+    <div id="loading" ng-show="!loaded">
+      <div clas="loading-image"><img id="image-loading" src="css/images/loading.gif" /></div>
+      <div class="loading-text">Loading ...</div>
     </div>
   </body>
 </html>

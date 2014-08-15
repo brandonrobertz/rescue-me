@@ -57,7 +57,19 @@ div.row {
     width: 90%;
 }
 
-
 .partition {
     color: #999999;
 }
+
+div#loading{
+    padding: 5% 0 0 50%;
+}
+
+img#image-loading{
+    margin-left: 13px !important;
+}
+
+#loading .loading-text {
+    color: #999999;
+}
+
