@@ -2,6 +2,7 @@
 #header .title{
     font-size: 3em;
     text-align: center;
+    height: 125px;
 }
 #header .subtitle{
     text-align: left;
@@ -12,19 +13,17 @@
 }
 
 /* Dogs */
-.dogs-listing {
-    float: left;
-    width: 50%;
-    height: 350px;
-}
-.dogs-listing .dog-image-name img{
-    max-width:50%;
-    max-height:200px;
+div.dogs-border {
+    border: 1px solid #bbbbbb;
+    padding: 1em;
 }
 
-.dog-image img{
-    max-height:300px;
-    max-width: 300px;
+div.row {
+    padding-bottom: 1em;
+}
+
+.dogs-listing .dogs-image img{
+    /* max-height:75%; */
 }
 
 .adoption-ready {

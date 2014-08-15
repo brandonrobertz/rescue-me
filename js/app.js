@@ -1,5 +1,5 @@
-angular.module('wags', ['ngAnimate','ui.slider', 'ui.bootstrap'])
-.controller( 'WagsCtrl', ['$scope', '$modal', function($scope, $modal) {
+angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
+.controller( 'RescueMeCtrl', ['$scope', '$modal', function($scope, $modal) {
     var URL = "1y-kJ2lehFeMEn4avPAzf1b7RfsYTKL19fsznK8qaP_w";
     $scope.dogs = [];
     $scope.filterByType = {
