@@ -6,13 +6,34 @@
 #header .subtitle{
     text-align: left;
     font-size: 1.3em;
-    margin-top: 1em;
+    padding-top: 40px;
+    vertical-align: bottom;
+    color: #909090;
 }
 
 /* Dogs */
+.dogs-listing {
+    float: left;
+    width: 50%;
+    height: 350px;
+}
 .dogs-listing .dog-image-name img{
-    max-width:200px;
+    max-width:50%;
     max-height:200px;
+}
+
+.dog-image img{
+    max-height:300px;
+    max-width: 300px;
+}
+
+.adoption-ready {
+    text-align: center;
+}
+
+.adoption-ready button{
+    font-size: 0.7em !important;
+    padding: 0.3em !important;
 }
 
 /* Controls */

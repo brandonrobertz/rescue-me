@@ -17,14 +17,13 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
 
     <link rel="stylesheet" href="css/jquery-ui.css">
 
     <script type="text/ng-template" id="dogDetail">
       <div class="modal-header">
-        <h3 class="modal-title">{{dog.name}}</h3>
+        <h3 class="modal-title">{{dog.name | uppercase}}</h3>
       </div>
       <div class="modal-body">
         <img style="max-width:100%; max-height:50%;" class="pure-img" ng-src="{{dog.photourl}}" />
@@ -41,12 +40,12 @@
   </head>
   <body ng-controller="WagsCtrl" class="container-fluid">
     <div id="header" class="row">
-      <div class="header-row col-xs-6">
+      <div class="header-row col-xs-5">
         <div class="title">
-          <h1>Wags N Licks</h1>
+          <img src="css/images/rescueme.png" alt="Rescue Me!"/>
         </div>
       </div>
-      <div class="header-row col-xs-6">
+      <div class="header-row col-xs-7">
         <div class="subtitle">
           <h2>Dog Adoption List</h2>
         </div>
@@ -56,77 +55,94 @@
     </div>
 
     <div id="main" class="row">
+      <!-- Display Area -->
       <div id="content" class="col-xs-8">
-        <div id="dogs">
-          <div ng-repeat="dog in dogs | filterAttrib:{'keepList':filterByType.breed, 'name': 'breed'} |  filterAttrib:{'keepList':filterByType.size, 'name': 'size'}  | filterAttrib:{'keepList':filterByType.sex, 'name': 'sex'} | filterAge:age | filter:querydesc"
-               class="dogs-listing pure-g">
-            <div class="dog-image pure-u-1-5">
+          <div class="dogs-listing"
+            ng-repeat="dog in dogs |
+               filterAttrib:{'keepList':filterByType.breed, 'name': 'breed'} |
+               filterAttrib:{'keepList':filterByType.size, 'name': 'size'}  |
+               filterAttrib:{'keepList':filterByType.sex, 'name': 'sex'} |
+               filterAge:age |
+               filter:querydesc">
+
+            <div class="dog-details">
+                <div class="dog-name">
+                  <h3><a href="" ng-click="open(dog)">{{dog.name}}</a></h3>
+                </div>
+
+                <div class="specs">
+                  <span class="small">Sex</span> <span class="sex"><strong>{{dog.sex | uppercase}}</strong></span>
+                  <span class="small">Breed</span> <span class="breed"><strong>{{dog.breed}}</strong></span>
+                  <span class="small">Weight</span> <span class="weight"><strong>{{dog.weight}}</strong></span>
+                </div>
+
+                  <div class="intakedate">
+                    {{dog.intakedate}}
+                  </div>
+
+                <!-- <div class="status">
+                <div class="adoption-ready" ng-show="dog.adoptionready === 'yes'">
+                <button type="button" class="btn btn-success">Adoption Ready!</button>
+                </div>
+                </div> -->
+
+                  <div>
+                    <div class="description">
+                      <p>
+                        {{dog.description | cut:true:50:'...' }}
+                      </p>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="dog-image">
               <a href="" ng-click="open(dog)">
-                <img style="max-width:200px; max-height:200px;" class="pure-img" ng-src="{{dog.photourl}}" />
+                <img class="img-responsive" ng-src="{{dog.photourl}}" />
               </a>
             </div>
-            <div class="dog-details pure-u-4-5">
-              <div class="dog-name pure-u-1-5">
-                  <h3><a href="" ng-click="open(dog)">{{dog.name}}</a></h3>
-              </div>
-              <div class="dog-attributes pure-u-3-5">
-                <div class="sex">
-                  {{dog.sex}}
-                </div>
-                <div class="breed">
-                  {{dog.breed}}
-                </div>
-                <div class="weight">
-                  {{dog.weight}}
-                </div>
-                <div class="description">
-                  {{dog.description | cut:true:20 }}
-                </div>
-                <div class="status">
-                  {{dog.status}}
-                </div>
-                <div class="sex">
-                  {{dog.sex}}
-                </div>
-                <div class="intakedate">
-                  {{dog.intakedate}}
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
 
+      <!-- Selection Toolbar -->
       <div id="side" class="col-xs-4">
         <div class="form-group">
           <label for="searchField">Search</label>
           <input id="searchField" class="form-control" ng-model="querydesc">
         </div>
-        <div class="checkbox">
-          Size
-          <label ng-repeat="size in filterByType.size" class="checkbox-inline">
-            <input type="checkbox" ng-model="size.value"/> {{size.name}}
-          </label>
-        <div>
-          Breed
-          <div class="checkbox">
+        <div class="form-group">
+          <label for="sizeFilter">Size</label>
+            <div id="sizeFilter" class="checkbox">
+              <label ng-repeat="size in filterByType.size" class="checkbox-inline">
+                <input type="checkbox" ng-model="size.value"/> {{size.name | lowercase}}
+              </label>
+            </div>
+        <div class="form-group">
+          <label for="breedFilter">Breed</label>
+          <div id="breedFilter" class="checkbox">
             <label ng-repeat="breed in filterByType.breed" class="checkbox-inline">
-              <input type="checkbox" ng-model="breed.value"/> {{breed.name}}
+              <input type="checkbox" ng-model="breed.value"/> {{breed.name | lowercase}}
             </label>
           </div>
         </div>
-        <div>
-          Sex
-          <div class="checkbox">
+        <div class="form-group">
+          <label for="sexFilter">Sex</label>
+          <div id="sexFilter" class="checkbox">
             <label ng-repeat="sex in filterByType.sex" class="checkbox-inline">
-              <input type="checkbox" ng-model="sex.value"/> {{sex.name}}
+              <input type="checkbox" ng-model="sex.value"/> {{sex.name | uppercase}}
             </label>
           </div>
         </div>
-        <div class="age-control">
-          Age
-          <div ui-slider="{range: true}" min="1" max="18" step="1" ng-model="age" class="age-slider"></div>
-          Selected {{age[0]}} - {{age[1]}}
+        <div class="age-control form-group">
+          <label for="ageFilter">Age</label>
+          <div ui-slider="{range: true}"
+               min="1"
+               max="18"
+               step="1"
+               ng-model="age"
+               id="ageFilter"
+               class="age-slider"></div>
+          <small>Currently Selected: {{age[0]}} - {{age[1]}}</small>
         </div>
       </div>
 

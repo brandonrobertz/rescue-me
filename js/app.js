@@ -50,7 +50,12 @@ angular.module('wags', ['ngAnimate','ui.slider', 'ui.bootstrap'])
                  * filterObj object to get recognized.
                  */
                 if( item.hasOwnProperty(type) && filterObj[type] !== undefined){
-                    var feature = {name: data[i][type], value: true};
+                    var opt = data[i][type];
+                    console.log('opt', opt);
+
+                    var optL = opt.toLowerCase();
+                    console.log( 'optL', optL);
+                    var feature = {name: optL, value: true};
 
                     /**
                      * Here we de-dupe the filter options so we don't get
@@ -95,7 +100,8 @@ angular.module('wags', ['ngAnimate','ui.slider', 'ui.bootstrap'])
             var keep = keepList[k];
             for( var n = 0; n < collection.length; n++){
                 var current = collection[n];
-                if( keep.value && keep.name === current[property]){
+                var thisProperty = current[property].toLowerCase();
+                if( keep.value && keep.name === thisProperty){
                     newCollection.push(current);
                 }
             }
@@ -109,7 +115,7 @@ angular.module('wags', ['ngAnimate','ui.slider', 'ui.bootstrap'])
 
         for( var i = 0; i < collection.length; i++){
             var item = collection[i],
-                intAge = parseInt( item.age, 10);
+                intAge = parseFloat( item.age);
             if( intAge >= ageRange[0] && intAge <= ageRange[1]){
                 newCollection.push(item);
             }
