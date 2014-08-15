@@ -23,9 +23,25 @@
         <h3 class="modal-title">{{dog.name | uppercase}}</h3>
       </div>
       <div class="modal-body">
-        <img style="max-width:100%; max-height:50%;" ng-src="{{dog.photourl}}" />
+        <div class="full-photo">
+          <img style="max-width:100%; max-height:50%;" ng-src="{{dog.photourl}}" />
+        </div>
         <div class="full-description">
-          {{dog.description}}
+          <p>
+            {{dog.description}}
+          </p>
+        </div>
+        <div class="full-specs">
+                    <span class="small">Sex</span> <span class="attrib sex"><strong>{{dog.sex | uppercase}}</strong></span>
+                    <span class="small">Weight</span> <span class="attrib weight"><strong>{{dog.weight}} lbs</strong></span>
+                    <span class="small">Spayed/Neutered</span> <span class="attrib spayedorneutered"><strong>{{dog.spayedorneutered | uppercase}}</strong></span>
+                    <span class="small">Energylevel</span> <span class="attrib energylevel"><strong>{{dog.energylevel}}</strong></span>
+        </div>
+        <div class="full-specs">
+          <span class="small">Breed</span> <span class="attrib breed"><strong>{{dog.breed}}</strong></span>
+        </div>
+        <div class="full-intake" ng-show="dog.intakedate">
+          <small>Arrived on: {{dog.intakedate}}</small>
         </div>
       </div>
       <div class="modal-footer">
@@ -61,6 +77,7 @@
              filterAttrib:{'keepList':filterByType.sex, 'name': 'sex'} |
              filterAttrib:{'keepList':filterByType.spayedorneutered, 'name': 'spayedorneutered'} |
              filterAttrib:{'keepList':filterByType.energylevel, 'name': 'energylevel'} |
+             filterAttrib:{'keepList':filterByType.childfriendly, 'name': 'childfriendly'} |
              filterAge:age |
              filterWeight:weight |
              filter:querydesc">
@@ -86,6 +103,7 @@
                     <span class="small">Weight</span> <span class="weight"><strong>{{dog.weight}} lbs</strong></span>
                     <span class="small">Spayed/Neutered</span> <span class="weight"><strong>{{dog.spayedorneutered | uppercase}}</strong></span>
                     <span class="small">Energylevel</span> <span class="energylevel"><strong>{{dog.energylevel}}</strong></span>
+                    <span class="small">Child Friendly</span> <span class="childfriendly"><strong>{{dog.childfriendly}}</strong></span>
                   </div>
 
                   <div class="description"><p><img src="css/images/quote.png" />{{dog.description | cut:true:50:'...' }}</p></div>
@@ -111,6 +129,7 @@
                class="age-slider"></div>
           <small>Currently Selected: {{age[0]}} - {{age[1]}}</small>
         </div>
+
         <div class="weight-control form-group">
           <label for="weightFilter">Weight</label>
           <div ui-slider="{range: true}"
@@ -123,7 +142,7 @@
           <small>Currently Selected: {{weight[0]}} - {{weight[1]}}</small>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" ng-show="filterByType.breed && filterByType.breed.length !== 0">
           <label for="breedFilter">Breed</label>
           <div id="breedFilter" class="checkbox">
             <label ng-repeat="breed in filterByType.breed" class="checkbox-inline">
@@ -133,18 +152,27 @@
           <a href="" ng-click="check(filterByType.breed, true)"><small>All</small></a>
           <a class="partition"> | </a>
           <a href="" ng-click="check(filterByType.breed, false)"><small>None</small></a>
-
         </div>
-        <div class="form-group">
+
+        <div class="form-group" ng-show="filterByType.energylevel && filterByType.energylevel.length !== 0">
           <label for="energylevelFilter">Energylevel</label>
           <div id="energylevelFilter" class="checkbox">
             <label ng-repeat="energylevel in filterByType.energylevel" class="checkbox-inline">
               <input type="checkbox" ng-model="energylevel.value"/> {{energylevel.name | uppercase}}
             </label>
           </div>
+        </div>p
+
+        <div class="form-group" ng-show="filterByType.childfriendly && filterByType.childfriendly.length !== 0">
+          <label for="childfriendlyFilter">Child Friendly</label>
+          <div id="childfriendlyFilter" class="checkbox">
+            <label ng-repeat="childfriendly in filterByType.childfriendly" class="checkbox-inline">
+              <input type="checkbox" ng-model="childfriendly.value"/> {{childfriendly.name | uppercase}}
+            </label>
+          </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" ng-show="filterByType.sex && filterByType.sex.length !== 0">
           <label for="sexFilter">Sex</label>
           <div id="sexFilter" class="checkbox">
             <label ng-repeat="sex in filterByType.sex" class="checkbox-inline">
@@ -153,7 +181,7 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" ng-show="filterByType.spayedorneutered && filterByType.spayedorneutered.length !== 0">
           <label for="spayedorneuteredFilter">Spayed/Neutered</label>
           <div id="spayedorneuteredFilter" class="checkbox">
             <label ng-repeat="spayedorneutered in filterByType.spayedorneutered" class="checkbox-inline">

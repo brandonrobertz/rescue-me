@@ -73,3 +73,25 @@ img#image-loading{
     color: #999999;
 }
 
+/* Modal */
+.modal-header h3{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.full-description {
+    padding: 1.5em;
+    text-size: 1.1em;
+}
+
+.full-photo {
+    text-align: center;
+}
+
+.full-specs {
+    text-align: center;
+}
+
+.full-specs .attrib {
+    font-size: 1.2em;
+}
