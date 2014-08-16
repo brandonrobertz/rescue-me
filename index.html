@@ -32,13 +32,17 @@
           </p>
         </div>
         <div class="full-specs">
-                    <span class="small">Sex</span> <span class="attrib sex"><strong>{{dog.sex | uppercase}}</strong></span>
-                    <span class="small">Weight</span> <span class="attrib weight"><strong>{{dog.weight}} lbs</strong></span>
-                    <span class="small">Spayed/Neutered</span> <span class="attrib spayedorneutered"><strong>{{dog.spayedorneutered | uppercase}}</strong></span>
-                    <span class="small">Energylevel</span> <span class="attrib energylevel"><strong>{{dog.energylevel}}</strong></span>
+          <span ng-show="dog.sex"><span class="small">Sex</span> <span class="attrib sex"><strong>{{dog.sex | uppercase}}</strong></span></span>
+          <span ng-show="dog.weight"><span class="small">Weight</span> <span class="attrib weight"><strong>{{dog.weight}} lbs</strong></span></span>
+          <span ng-show="dog.spayedorneutered"><span class="small">Spayed/Neutered</span> <span class="attrib spayedorneutered"><strong>{{dog.spayedorneutered | uppercase}}</strong></span></span>
+          <span ng-show="dog.energylevel"><span class="small">Energylevel</span> <span class="attrib energylevel"><strong>{{dog.energylevel}}</strong></span></span>
         </div>
-        <div class="full-specs">
+        <div class="full-specs" ng-show="dog.breed">
           <span class="small">Breed</span> <span class="attrib breed"><strong>{{dog.breed}}</strong></span>
+        </div>
+        <div class="contact-shelter" ng-show="dog.adoptioncontact">
+          <p>Looking to adopt? You can contact the rescue here:</p>
+          <p>{{dog.adoptioncontact}}</p>
         </div>
         <div class="full-intake" ng-show="dog.intakedate">
           <small>Arrived on: {{dog.intakedate}}</small>
@@ -98,12 +102,12 @@
                   </div>
 
                   <div class="specs">
-                    <span class="small">Sex</span> <span class="sex"><strong>{{dog.sex | uppercase}}</strong></span>
-                    <span class="small">Breed</span> <span class="breed"><strong>{{dog.breed}}</strong></span>
-                    <span class="small">Weight</span> <span class="weight"><strong>{{dog.weight}} lbs</strong></span>
-                    <span class="small">Spayed/Neutered</span> <span class="weight"><strong>{{dog.spayedorneutered | uppercase}}</strong></span>
-                    <span class="small">Energylevel</span> <span class="energylevel"><strong>{{dog.energylevel}}</strong></span>
-                    <span class="small">Child Friendly</span> <span class="childfriendly"><strong>{{dog.childfriendly}}</strong></span>
+                    <span ng-show="dog.sex"><span class="small">Sex</span> <span class="sex"><strong>{{dog.sex | uppercase}}</strong></span></span>
+                      <span ng-show="dog.breed"><span class="small">Breed</span> <span class="breed"><strong>{{dog.breed}}</strong></span></span>
+                      <span ng-show="dog.weight"><span class="small">Weight</span> <span class="weight"><strong>{{dog.weight}} lbs</strong></span></span>
+                      <span ng-show="dog.spayedorneutered"><span class="small">Spayed/Neutered</span> <span class="weight"><strong>{{dog.spayedorneutered | uppercase}}</strong></span></span>
+                      <span ng-show="dog.energylevel"><span class="small">Energylevel</span> <span class="energylevel"><strong>{{dog.energylevel}}</strong></span></span>
+                      <span ng-show="dog.childfriendly"><span class="small">Child Friendly</span> <span class="childfriendly"><strong>{{dog.childfriendly | uppercase}}</strong></span></span>
                   </div>
 
                   <div class="description"><p><img src="css/images/quote.png" />{{dog.description | cut:true:50:'...' }}</p></div>
@@ -161,7 +165,7 @@
               <input type="checkbox" ng-model="energylevel.value"/> {{energylevel.name | uppercase}}
             </label>
           </div>
-        </div>p
+        </div>
 
         <div class="form-group" ng-show="filterByType.childfriendly && filterByType.childfriendly.length !== 0">
           <label for="childfriendlyFilter">Child Friendly</label>

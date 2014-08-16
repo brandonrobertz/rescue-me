@@ -11,6 +11,8 @@ adoptable animals and their information.
 Edit one line inside `js/app.js` to point at the spreadsheet, and point your users
 at a beautifully filter-able listing!
 
+NOTE: The site shows dogs from [Wags And Licks Dog Rescue](http://wagsandlicks.wordpress.com/contact-us/)
+
 ## Usage
 
 ### 0. Fork Rescue Me!
@@ -36,8 +38,7 @@ located [here](https://docs.google.com/spreadsheets/d/1y-kJ2lehFeMEn4avPAzf1b7Rf
     Medical Issues
     In Foster Care?
     Intake Date
-
-NOTE: It's OK to leave some of the fields blank, as long as the column is there.
+    Adoption Contact
 
 Now make the Spreadsheet publicly-accessible.
 
@@ -60,3 +61,10 @@ Open `js/app.js` and find the line:
     var URL = "1y-kJ2lehFeMEn4avPAzf1b7RfsYTKL19fsznK8qaP_w";
 
 Replace the key with your Google spreadsheet's key.
+
+## Roadmap
+
+Here are a list of features we want to implement next:
+
+1. Scraping tool for all shelters/rescues in Austin.
+2. Secondary sheet for people to add dogs to, for insertion into main list. Sort of like a moderation queue.

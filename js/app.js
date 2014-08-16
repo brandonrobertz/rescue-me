@@ -62,6 +62,7 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
 
                     var optL = opt.toLowerCase();
                     console.log( 'optL', optL);
+                    if( !optL) continue;
                     var feature = {name: optL, value: true};
 
                     /**
@@ -112,7 +113,10 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
 }]).filter('filterAttrib',function () {
     return function (collection, attrib) {
         /* Note: keep list needs to be de-duped */
-        if (collection === null) return collection;
+        if (collection === null ) return collection;
+        if (!attrib.keepList || attrib.keepList.length === 0){
+            return collection;
+        }
 
         var newCollection = [];
         var keepList = attrib.keepList;
