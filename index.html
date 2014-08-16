@@ -53,6 +53,21 @@
       </div>
     </script>
 
+    <script type="text/ng-template" id="ewok">
+      <div class="modal-header memory-header">
+        <h4 class="modal-title">In Memory</h4>
+      </div>
+      <div class="modal-body memory-body">
+        <img src="css/images/ewok.png" />
+        <p>
+          This site is dedicated to Ewok, the greatest Shih Tzu there ever was. R.I.P., buddy.
+        </p>
+      </div>
+      <div class="modal-footer memory-footer">
+        <button class="btn" ng-click="$dismiss()">Close</button>
+      </div>
+    </script>
+
   </head>
   <body ng-controller="RescueMeCtrl" class="container-fluid">
     <div id="header" class="row">
@@ -199,12 +214,14 @@
         </div>
 
       </div>
-
-    </div>
+    </div><!-- #main -->
 
     <div id="loading" ng-show="!loaded">
       <div clas="loading-image"><img id="image-loading" src="css/images/loading.gif" /></div>
       <div class="loading-text">Loading ...</div>
+    </div>
+    <div id="footer">
+      <a href="http://bxroberts.org/">bxroberts</a> 2014 <span class="divider">-</span> GPLv3+ <span class="divider">-</span> This site is <a href="" ng-click="inMemory()">dedicated to Ewok</a>
     </div>
   </body>
 </html>

@@ -69,6 +69,10 @@ img#image-loading{
     margin-left: 13px !important;
 }
 
+div#loading {
+    padding-bottom: 5em;
+}
+
 #loading .loading-text {
     color: #999999;
 }
@@ -94,4 +98,19 @@ img#image-loading{
 
 .full-specs .attrib {
     font-size: 1.2em;
+}
+
+.memory-body {
+    text-align: center;
+}
+
+.memory-body p{
+    padding: 2em;
+}
+
+
+#footer {
+    color: #999999;
+    border-top: 1px solid #dddddd;
+    text-align: center;
 }

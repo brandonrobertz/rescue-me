@@ -1,6 +1,6 @@
 angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
 .controller( 'RescueMeCtrl', ['$scope', '$modal', function($scope, $modal) {
-    // https://docs.google.com/spreadsheets/d/1y-kJ2lehFeMEn4avPAzf1b7RfsYTKL19fsznK8qaP_w/edit#gid=0
+    // https://docs.google.com/spreadsheets/d/1y-kJ2lehFeMEn4avPAzf1b7RfsYTKL19fsznK8qaP_w
     var URL = "1y-kJ2lehFeMEn4avPAzf1b7RfsYTKL19fsznK8qaP_w";
     $scope.dogs = [];
     $scope.filterByType = {
@@ -29,6 +29,17 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
             }
         });
     };
+
+    $scope.inMemory = function () {
+        $modal.open({
+            templateUrl: 'ewok',
+            controller: [ '$scope', function ($scope) {
+
+            }],
+            size: 'sm'
+        });
+    };
+
 
     $scope.loaded = false;
 
