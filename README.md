@@ -22,7 +22,7 @@ up your own Rescue Me website under your github account.
 
 ### 1. Create your Google Spreadsheet
 
-An example spreadsheet for the [Wags And Licks](http://wagsandlicks.org/) is
+An example spreadsheet for the [Wags And Licks Dog Rescue](http://wagsandlicks.org/) is
 located [here](https://docs.google.com/spreadsheets/d/1y-kJ2lehFeMEn4avPAzf1b7RfsYTKL19fsznK8qaP_w/edit). It needs the fields:
 
     Name

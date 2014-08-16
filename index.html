@@ -41,8 +41,7 @@
           <span class="small">Breed</span> <span class="attrib breed"><strong>{{dog.breed}}</strong></span>
         </div>
         <div class="contact-shelter" ng-show="dog.adoptioncontact">
-          <p>Looking to adopt? You can contact the rescue here:</p>
-          <p>{{dog.adoptioncontact}}</p>
+          <p>Looking to adopt? You can contact the rescue here:<br/><span class="info">{{dog.adoptioncontact}}</span></p>
         </div>
         <div class="full-intake" ng-show="dog.intakedate">
           <small>Arrived on: {{dog.intakedate}}</small>
