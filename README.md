@@ -2,25 +2,18 @@
 
 ![Rescue Me! logo](http://brandonrobertz.github.io/RescueMe/css/images/rescueme.png)
 
-Rescue Me! is a webapp that makes linking animal shelters with
-people looking to adopt simple and painless.
+Rescue Me! is a webapp that makes linking animal shelters with people looking to adopt simple and painless. All it requires is a Google Doc with a list of currently adoptable animals and their information.
 
-You can find the running version at: [http://brandonrobertz.github.io/rescue-me/](http://brandonrobertz.github.io/rescue-me/)
-
-All it requires is a Google Doc with a list of currently
-adoptable animals and their information.
-
-Edit one line inside `js/app.js` to point at the spreadsheet, and point your users
-at a beautifully filter-able listing!
-
-NOTE: The site shows dogs from [Wags And Licks Dog Rescue](http://wagsandlicks.wordpress.com/contact-us/)
+You can find the running version at: [http://brandonrobertz.github.io/rescue-me/](http://brandonrobertz.github.io/rescue-me/). It currently features dogs from [Wags And Licks Dog Rescue](http://wagsandlicks.wordpress.com/contact-us/).
 
 ## Usage
 
 ### 0. Fork Rescue Me!
 
 You're already half way there! Forking Rescue Me will automatically set
-up your own Rescue Me website under your github account.
+up your own Rescue Me website under your github account. Your URL will be:
+
+    http://[Your GitHub Username].github.io/rescue-me/
 
 ### 1. Create your Google Spreadsheet
 
