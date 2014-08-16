@@ -69,10 +69,8 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
                  */
                 if( item.hasOwnProperty(type) && filterObj[type] !== undefined){
                     var opt = data[i][type];
-                    console.log('opt', opt);
 
                     var optL = opt.toLowerCase();
-                    console.log( 'optL', optL);
                     if( !optL) continue;
                     var feature = {name: optL, value: true};
 
@@ -101,11 +99,8 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
      * 'value' to whatever is specified
      */
     $scope.check = function( filterObj, toValue){
-        console.log('filterObj', filterObj);
         for( var option in filterObj){
-            console.log('opt', option);
             if( filterObj.hasOwnProperty(option) && angular.isDefined(filterObj[option].value)){
-                console.log( 'filterObj[option].value', filterObj[option]);
                 filterObj[option].value = toValue;
             }
         }
