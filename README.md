@@ -5,6 +5,8 @@
 Rescue Me! is a webapp that makes linking animal shelters with
 people looking to adopt simple and painless.
 
+You can find the running version at: [http://brandonrobertz.github.io/RescueMe/](http://brandonrobertz.github.io/RescueMe/)
+
 All it requires is a Google Doc with a list of currently
 adoptable animals and their information.
 
