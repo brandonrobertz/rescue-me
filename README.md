@@ -18,7 +18,7 @@ up your own Rescue Me website under your github account. Your URL will be:
 ### 1. Create your Google Spreadsheet
 
 An example spreadsheet for the [Wags And Licks Dog Rescue](http://wagsandlicks.org/) is
-located [here](https://docs.google.com/spreadsheets/d/1BZFRwle-r0BVwhzWqmSV8QfdmFVdtPRD3sENYftt-JE). It needs the fields:
+located [here](https://docs.google.com/spreadsheets/d/1BZFRwle-r0BVwhzWqmSV8QfdmFVdtPRD3sENYftt-JE/pubhtml). It needs the fields:
 
     Name
     Sex
@@ -47,11 +47,11 @@ you need to make it accessible publicly. Do that by clicking on `File -> Publish
 Choose the settings, I leave mine default "Entire Document" and "Web Page", and then a
 link will appear. You need to copy that link. It will look like this:
 
-    https://docs.google.com/spreadsheets/d/1BZFRwle-r0BVwhzWqmSV8QfdmFVdtPRD3sENYftt-JE
+    https://docs.google.com/spreadsheets/d/1BZFRwle-r0BVwhzWqmSV8QfdmFVdtPRD3sENYftt-JE/pubhtml
 
 Open `js/app.js` and find the line:
 
-    var URL = "https://docs.google.com/spreadsheets/d/1BZFRwle-r0BVwhzWqmSV8QfdmFVdtPRD3sENYftt-JE";
+    var URL = "https://docs.google.com/spreadsheets/d/1BZFRwle-r0BVwhzWqmSV8QfdmFVdtPRD3sENYftt-JE/pubhtml";
 
 Replace the URL with your Google spreadsheet's public web URL.
 
