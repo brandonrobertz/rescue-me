@@ -2,7 +2,7 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
 .controller( 'RescueMeCtrl', ['$scope', '$modal', function($scope, $modal) {
     // replace this with your own spreadsheet link that you get from File -> Publish to the Web.
     // see the README for more information.
-    var URL = "https://docs.google.com/spreadsheets/d/1BZFRwle-r0BVwhzWqmSV8QfdmFVdtPRD3sENYftt-JE/pubhtml";
+    var URL = "https://docs.google.com/spreadsheets/d/1BZFRwle-r0BVwhzWqmSV8QfdmFVdtPRD3sENYftt-JE/pub";
     $scope.dogs = [];
     $scope.filterByType = {
         breed: [],
