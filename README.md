@@ -9,7 +9,7 @@ You can find the running version at: [http://brandonrobertz.github.io/rescue-me/
 **2021 NOTE** If you're still using this and running into problems with Google's upstream changes, you really shouldn't be using this. BUT if you are, make sure you use the latest code and pay attention to the following changes:
 
 - In `js/app.js` you need to change the end of the `URL` variable from `/pubhtml` to `/pub?output=csv`
-- Use the latest code. It adds a dependency and changes how we load the sheet.
+- Use the latest code. It adds a dependency and changes how we load the sheet. Specifically the `Tabletop.init({...})` need to look like this: https://github.com/brandonrobertz/rescue-me/blob/master/js/app.js#L118-L131
 
 ## Usage
 
