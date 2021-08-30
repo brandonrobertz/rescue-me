@@ -2,7 +2,7 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
 .controller( 'RescueMeCtrl', ['$scope', '$modal', function($scope, $modal) {
     // replace this with your own spreadsheet link that you get from File -> Publish to the Web.
     // see the README for more information.
-    var URL = "https://docs.google.com/spreadsheets/d/1BZFRwle-r0BVwhzWqmSV8QfdmFVdtPRD3sENYftt-JE/pub";
+    var URL = "https://docs.google.com/spreadsheets/d/1BZFRwle-r0BVwhzWqmSV8QfdmFVdtPRD3sENYftt-JE/pub?output=csv";
     $scope.dogs = [];
     $scope.filterByType = {
         breed: [],
@@ -115,7 +115,20 @@ angular.module('rescueMe', ['ngAnimate','ui.slider', 'ui.bootstrap'])
         $scope.$apply($scope.loaded);
     }
 
-    Tabletop.init( { key: URL, callback: loadDogs, simpleSheet: true } );
+    Papa.parse(URL, {
+      download: true,
+      header: true,
+      transformHeader:function(h) {
+        // NOTE: This trims the header so it's compatable with
+        // the old version of the code. This could be incorrect, though,
+        // and not quite 100% backward compatable.
+        return h.trim().toLowerCase().replace(/[^a-z0-9]/, '');
+      },
+      complete: function(results) {
+        var data = results.data
+        loadDogs(data);
+      }
+    });
 
 }]).filter('filterAttrib',function () {
     return function (collection, attrib) {

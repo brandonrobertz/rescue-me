@@ -6,6 +6,11 @@ Rescue Me! is a webapp that makes linking animal shelters with people looking to
 
 You can find the running version at: [http://brandonrobertz.github.io/rescue-me/](http://brandonrobertz.github.io/rescue-me/). It currently features dogs from [Wags And Licks Dog Rescue](http://wagsandlicks.wordpress.com/contact-us/).
 
+**2021 NOTE** If you're still using this and running into problems with Google's upstream changes, you really shouldn't be using this. BUT if you are, make sure you use the latest code and pay attention to the following changes:
+
+- In `js/app.js` you need to change the end of the `URL` variable from `/pubhtml` to `/pub?output=csv`
+- Use the latest code. It adds a dependency and changes how we load the sheet.
+
 ## Usage
 
 ### 0. Fork Rescue Me!
